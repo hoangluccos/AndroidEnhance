@@ -1,19 +1,25 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import Introscreen from "./src/Introscreen";
-import HomeScreen from "./src/HomeScreen";
-
+import { useState, useEffect } from "react";
+import SplashScreenComponent from "./src/pages/SplashScreenComponent";
+import OnboardingScreen from "./src/pages/OnBoardingScreen";
+import LoginScreen from "./src/pages/LoginScreen";
+import "./global.css";
 const Stack = createStackNavigator();
 
 export default function App() {
-  return (
+  const [isSplashScreen, setIsSplashScreen] = useState(true);
+
+  return isSplashScreen ? (
+    <SplashScreenComponent onHideSplash={() => setIsSplashScreen(false)} />
+  ) : (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="Introscreen"
         screenOptions={{ headerShown: false }}
+        initialRouteName="OnboardingScreen"
       >
-        <Stack.Screen name="Introscreen" component={Introscreen} />
-        <Stack.Screen name="HomeScreen" component={HomeScreen} />
+        <Stack.Screen name="OnboardingScreen" component={OnboardingScreen} />
+        <Stack.Screen name="LoginScreen" component={LoginScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
