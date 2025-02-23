@@ -23,7 +23,6 @@ const ProfileScreen = () => {
     getProfile();
   }, []);
 
-  // Gửi OTP đến email mới
   const handleSendOtp = async () => {
     try {
       if (!newEmail) {
@@ -44,7 +43,6 @@ const ProfileScreen = () => {
     }
   };
 
-  // Xác thực OTP
   const handleVerifyOtp = async () => {
     try {
       if (!otp) {
@@ -60,7 +58,7 @@ const ProfileScreen = () => {
       if (res.data.code === 200) {
         Alert.alert("Thành công", "Xác thực OTP thành công!");
         setIsOtpVerified(true);
-        setData({ ...data, email: newEmail }); // Cập nhật email trong state
+        setData({ ...data, email: newEmail });
       }
     } catch (error) {
       console.log(error.response?.data);
@@ -68,7 +66,6 @@ const ProfileScreen = () => {
     }
   };
 
-  // Cập nhật profile sau khi đã xác thực email
   const handleUpdateProfile = async () => {
     if (!isOtpVerified) {
       Alert.alert("Lỗi", "Vui lòng xác thực email trước khi cập nhật!");
@@ -96,7 +93,6 @@ const ProfileScreen = () => {
         <Text className="mt-3 font-bold text-lg">User Profile</Text>
       </View>
 
-      {/* Input fields */}
       <View className="w-full max-w-lg">
         <Input
           title="Username"
@@ -116,7 +112,6 @@ const ProfileScreen = () => {
           className={isUpdate ? "bg-gray-200" : ""}
         ></Button>
         <View className={isUpdate ? "flex" : "hidden"}>
-          {/* Nhập email mới */}
           <Input
             title="Gmail Mới"
             placeholder="Nhập email mới"
@@ -124,7 +119,6 @@ const ProfileScreen = () => {
             onChange={setNewEmail}
           />
 
-          {/* Button gửi OTP */}
           <TouchableOpacity
             onPress={handleSendOtp}
             className="p-3 bg-blue-400 rounded-lg mt-2 w-full"
@@ -132,7 +126,6 @@ const ProfileScreen = () => {
             <Text className="text-center text-white font-bold">Gửi OTP</Text>
           </TouchableOpacity>
 
-          {/* Nhập OTP */}
           {isOtpSent && (
             <Input
               title="Nhập OTP"
@@ -142,7 +135,6 @@ const ProfileScreen = () => {
             />
           )}
 
-          {/* Button xác thực OTP */}
           {isOtpSent && (
             <TouchableOpacity
               onPress={handleVerifyOtp}
@@ -156,7 +148,6 @@ const ProfileScreen = () => {
         </View>
       </View>
 
-      {/* Save Button */}
       <TouchableOpacity
         onPress={handleUpdateProfile}
         className={`p-3 ${
