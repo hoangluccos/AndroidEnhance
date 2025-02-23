@@ -22,7 +22,7 @@ const ProfileScreen = () => {
     };
     getProfile();
   }, []);
-
+  //change
   const handleSendOtp = async () => {
     try {
       if (!newEmail) {

@@ -14,5 +14,11 @@ Kết quả:
    ![image](https://github.com/user-attachments/assets/a2f3b078-a623-4b1d-9b29-758d05b66bc0)
 - Trang Login
      ![image](https://github.com/user-attachments/assets/82c921ae-14d8-45be-a1b4-e1c950c28581)
-  
+# Bai Tap Tuan 3
+## Yeu cau: Xây dựng FrontEnd cho chức năng chỉnh sửa profile người dùng sau khi Login thành công, trong đó chỉnh sửa email và số điện thoại người dùng phải gửi OTP về mail để xác nhận email là thật, cập nhật hình ảnh người dùng (ảnh lưu trên cloudary).
+- Trang thong tin User
+  ![image](https://github.com/user-attachments/assets/e39dce21-2ed3-4fac-ba51-0e00862c2c51)
+  ![image](https://github.com/user-attachments/assets/efec445a-eeea-4893-a8d6-caba7e10993f)
+
+
 
