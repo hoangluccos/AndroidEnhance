@@ -5,7 +5,9 @@ import SplashScreenComponent from "./src/pages/SplashScreenComponent";
 import OnboardingScreen from "./src/pages/OnBoardingScreen";
 import LoginScreen from "./src/pages/LoginScreen";
 import ProfileScreen from "./src/pages/ProfileScreen";
+import UploadImageScreen from "./src/pages/UploadImageScreen";
 import "./global.css";
+ProfileScreen;
 const Stack = createStackNavigator();
 
 export default function App() {
@@ -22,6 +24,7 @@ export default function App() {
         <Stack.Screen name="OnboardingScreen" component={OnboardingScreen} />
         <Stack.Screen name="LoginScreen" component={LoginScreen} />
         <Stack.Screen name="ProfileScreen" component={ProfileScreen} />
+        <Stack.Screen name="UploadImageScreen" component={UploadImageScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

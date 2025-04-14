@@ -1,9 +1,16 @@
-import { View, Text, TouchableOpacity, Alert, Button } from "react-native";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  Alert,
+  Button,
+  Image,
+} from "react-native";
 import React, { useEffect, useState } from "react";
 import instance from "../api/instance";
 import Input from "../components/Input";
 
-const ProfileScreen = () => {
+const ProfileScreen = ({ navigation }) => {
   const [data, setData] = useState({});
   const [isUpdate, setIsUpdate] = useState(false);
   const [newEmail, setNewEmail] = useState("");
@@ -15,6 +22,7 @@ const ProfileScreen = () => {
     const getProfile = async () => {
       try {
         const res = await instance.get("/users/bio");
+        console.log(res.data.result);
         setData(res.data.result);
       } catch (error) {
         console.log(error.response?.data);
@@ -89,7 +97,20 @@ const ProfileScreen = () => {
     <View className="bg-orange-100 w-full h-full items-center my-5 px-5">
       {/* Avatar */}
       <View className="items-center mb-5 mt-5">
-        <View className="h-16 w-16 bg-cyan-400 p-10 rounded-[50]" />
+        <TouchableOpacity
+          onPress={() =>
+            navigation.navigate("UploadImageScreen", { avatar: data.avatar })
+          }
+        >
+          {data.avatar ? (
+            <Image
+              source={{ uri: data.avatar }}
+              style={{ width: 100, height: 100, borderRadius: 50 }}
+            />
+          ) : (
+            <View className="h-16 w-16 bg-cyan-400 p-10 rounded-[50]" />
+          )}
+        </TouchableOpacity>
         <Text className="mt-3 font-bold text-lg">User Profile</Text>
       </View>
 

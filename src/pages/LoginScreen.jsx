@@ -23,8 +23,8 @@ const LoginScreen = ({ navigation }) => {
     };
     const login = async (data) => {
       try {
+        console.log("Tien hanh login");
         const res = await instance.post("/auth/login", data);
-        console.log(res.data);
         if (res.data.code === 200) {
           console.log("navigate");
           await AsyncStorage.setItem(
@@ -34,7 +34,7 @@ const LoginScreen = ({ navigation }) => {
           navigation.replace("ProfileScreen");
         }
       } catch (error) {
-        console.log(error.response.data);
+        console.log(error.response || "Loi fetch api");
       }
     };
     login(data);
